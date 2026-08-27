@@ -1,136 +1,419 @@
-// All site copy lives here so it's easy to edit without touching components.
+// All site copy lives here. Trilingual: CONTENT.en / CONTENT.cz / CONTENT.sk share one shape.
+// Edit wording here without touching components.
 
 export const CALENDLY_URL = 'https://calendly.com/jakublazovy'
 
 export const site = {
   name: 'Jakub Lazový',
-  role: 'AI Automation & Monitoring Engineer',
-  location: 'Brno / Znojmo, Czech Republic',
   github: 'https://github.com/ZenNinja-Dev',
   email: 'jakublazovy@gmail.com',
+  location: 'Brno / Znojmo, Czech Republic',
 }
 
-export const hero = {
-  kicker: 'AI automation · Monitoring · Workflow engineering',
-  headline: 'Practical AI automation for SMEs — without hiring a full-time team.',
-  sub:
-    'I design and ship monitoring hubs, AI agents and automated workflows that plug into the tools you already run — M365, n8n, Make, custom Python, your CRM. You get a working system and a clear handover, not a dependency.',
-  ctaPrimary: 'Book a 30-min intro call',
-  ctaSecondary: 'See what I build',
-}
+export type Lang = 'en' | 'cz' | 'sk'
 
-export type Service = {
-  title: string
+export type Project = {
   tag: string
-  body: string
+  title: string
+  summary: string
   points: string[]
+  stack: string[]
+  status?: string
+  repo?: string
 }
 
-export const services: Service[] = [
-  {
-    title: 'Monitoring hub',
-    tag: 'observe',
-    body:
-      'One place to see whether things are actually working — before your customers tell you they aren’t.',
-    points: [
-      'Metrics, logs and alerts consolidated into dashboards your team reads at a glance',
-      'Alerting that fires on real problems, not noise',
-      'Runs on your infra or fully local — no forced cloud lock-in',
+type Content = {
+  nav: { services: string; work: string; approach: string; about: string; book: string }
+  hero: { kicker: string; headline: string; sub: string; ctaPrimary: string; ctaSecondary: string }
+  services: { heading: string; title: string; items: { tag: string; title: string; body: string; points: string[] }[] }
+  work: { heading: string; title: string; note: string }
+  projects: Project[]
+  approach: { title: string; sub: string; steps: { title: string; body: string }[] }
+  about: { title: string; body: string; stackLabel: string; stack: string[] }
+  contact: { title: string; body: string; cta: string }
+  footer: { role: string; builtLocal: string }
+  repoLabel: string
+}
+
+const en: Content = {
+  nav: { services: 'Services', work: 'Work', approach: 'Approach', about: 'About', book: 'Book a call' },
+  hero: {
+    kicker: 'AI automation · Monitoring · Workflow engineering',
+    headline: 'Practical AI automation for SMEs — without hiring a full-time team.',
+    sub:
+      'I design and ship monitoring hubs, AI agents and automated workflows that plug into the tools you already run — M365, n8n, Make, custom Python, your CRM. You get a working system and a clean handover, not a dependency.',
+    ctaPrimary: 'Book a 30-min intro call',
+    ctaSecondary: 'See what I build',
+  },
+  services: {
+    heading: 'What I build',
+    title: 'Three things, done properly and handed over.',
+    items: [
+      {
+        tag: 'observe',
+        title: 'Monitoring hub',
+        body: 'One place to see whether things are actually working — before your customers tell you they aren’t.',
+        points: [
+          'Metrics, logs and alerts consolidated into dashboards your team reads at a glance',
+          'Alerting that fires on real problems, not noise',
+          'Runs on your infra or fully local — no forced cloud lock-in',
+        ],
+      },
+      {
+        tag: 'automate',
+        title: 'AI agents',
+        body: 'Focused agents that do a specific, repetitive knowledge task end-to-end — reliably and on a schedule.',
+        points: [
+          'Reads your data sources, produces the output where your team already works',
+          'Deterministic where it matters, LLM only where it adds value',
+          'Human-in-the-loop by default — no black-box actions on your behalf',
+        ],
+      },
+      {
+        tag: 'connect',
+        title: 'Workflow automation',
+        body: 'The manual glue work between your systems, turned into automation that just runs.',
+        points: [
+          'n8n / Make / Power Automate, or custom Python where a script fits better',
+          'Connects to your CRM, mailbox, chat and internal tools',
+          'Documented and handed over so it survives without me',
+        ],
+      },
     ],
   },
-  {
-    title: 'AI agents',
-    tag: 'automate',
-    body:
-      'Focused agents that do a specific, repetitive knowledge task end-to-end — reliably and on a schedule.',
-    points: [
-      'Reads your data sources, produces the output where your team already works',
-      'Deterministic where it matters, LLM only where it adds value',
-      'Human-in-the-loop by default — no black-box actions on your behalf',
+  work: {
+    heading: 'Selected work',
+    title: 'Systems running in production — and built to be handed over.',
+    note: 'Client- and company-specific details are anonymised. Architecture and outcomes shown as-is.',
+  },
+  projects: [
+    {
+      tag: 'automation · production',
+      title: 'Daily Operations Briefing',
+      summary:
+        'A scheduled AI automation that turns overnight activity scattered across a mailbox and ~10 chats into one categorised morning digest — delivered to the team before they log on.',
+      points: [
+        'Reclaims the first ~30 min of every operator’s shift (team of ~12)',
+        'Live in daily production for several months, fully unattended',
+        '“Report on activity, expire on silence” de-dup doctrine — no stale items, no manual retiring',
+      ],
+      stack: ['Power Automate', 'AI Builder (GPT-4.1)', 'M365 · Outlook · Teams', 'SharePoint'],
+      status: 'Live in production',
+    },
+    {
+      tag: 'reliability · runnable',
+      title: 'Audience Reconciliation',
+      summary:
+        'A runnable engine that reconciles a CRM-quoted number against the live data-warehouse number, catching pricing drift before a contract executes.',
+      points: [
+        'Counting is a rules problem before it’s an AI problem — a deterministic, tested engine produces the number',
+        'A bounded LLM only rephrases the verdict into plain English; it never touches a number',
+        'Fails closed — a confident wrong number is the expensive failure, so unsafe cases route to a human',
+        'Runs offline, zero dependencies, 12/12 eval cases pass',
+      ],
+      stack: ['Python (stdlib)', 'Deterministic engine', 'Ollama / Anthropic (optional)', 'unittest + eval'],
+      repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
+    },
+    {
+      tag: 'monitoring · production',
+      title: 'Centralised Monitoring Hub',
+      summary:
+        'A single Azure-native monitoring surface for a ~36-system production estate — one entry point replacing scattered portal blades, personal bookmarks and a third-party log tool.',
+      points: [
+        'One parameterised workbook template scales across every system — a new system is a parameter change, not a hand-built page',
+        'Signal-over-noise alerting, hardened after a real 39-minute delayed-alert incident (Count→Total, per-system baselines)',
+        'A cross-platform “dead man’s switch” so the monitoring automations monitor themselves',
+        'Idempotent multi-environment rollout via Azure CLI + parameterised ARM templates',
+      ],
+      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
+      status: 'Live in production',
+    },
+  ],
+  approach: {
+    title: 'How I work',
+    sub: 'Small, senior, and built to hand over — not to lock you in.',
+    steps: [
+      { title: 'Scoped setup fee', body: 'A defined implementation with a fixed price and a clear deliverable. You know what you get before we start.' },
+      { title: 'Light monthly retainer', body: 'A small capped block of hours for upkeep and small tweaks — never an open-ended unlimited fee.' },
+      { title: 'New features, separately scoped', body: 'When you want more, we scope and price it on its own. No scope creep hidden inside a monthly bill.' },
+      { title: 'Documented handover', body: 'Everything is documented so your team can run it. Security — input validation, secrets, network exposure — is handled from day one.' },
     ],
   },
-  {
-    title: 'Workflow automation',
-    tag: 'connect',
+  about: {
+    title: 'About',
     body:
-      'The manual glue work between your systems, turned into automation that just runs.',
-    points: [
-      'n8n / Make / Power Automate, or custom Python where a script fits better',
-      'Connects to your CRM, mailbox, chat and internal tools',
-      'Documented and handed over so it survives without me',
+      'I’m Jakub — an AI automation and monitoring engineer working in B2B software, building an independent consulting practice in parallel. My background is operations and reliability, which is exactly why my automations are built to be dependable and boring in production: deterministic where practical, human-in-the-loop by default, and no fabrication. I work with Czech and Slovak SMEs on the Microsoft stack and beyond — the goal is always a system your team owns, not a consultant you can’t get rid of.',
+    stackLabel: 'Stack',
+    stack: [
+      'Azure Monitor · Log Analytics · KQL',
+      'Power Automate · Copilot Studio · AI Builder',
+      'Python · FastAPI · LangGraph',
+      'Prometheus · Grafana · Docker',
+      'n8n · Make · M365',
     ],
   },
-]
-
-export const caseStudy = {
-  label: 'Case study · in production',
-  title: 'Daily Operations Briefing',
-  oneLiner:
-    'A scheduled AI automation that turns overnight activity scattered across a mailbox and ~10 chats into one categorised morning digest — delivered to the team before they log on.',
-  context:
-    'Built for a ~12-person operations team at a B2B software company. Every morning, operators spent at least the first 30 minutes of their shift manually reconstructing “what happened overnight” across a mailbox and roughly ten chats. Important items were easy to miss, and whoever came on shift re-read the same threads to catch up — a slow, error-prone routine that ate into the start of every shift and gave a different picture depending on who was reading.',
-  solution:
-    'A scheduled flow now runs unattended every morning at 07:30 CEST. It gathers the last 24 hours from the mailbox and the ~10 chats, runs an LLM prompt that produces a categorised digest, and posts it straight to the team’s group chat. One consolidated, ready-to-read briefing is waiting when the team logs on — the same picture for everyone, no manual channel-hopping.',
-  stack: [
-    'Power Automate (scheduled flow)',
-    'AI Builder — GPT-4.1 custom prompt',
-    'M365: Outlook + Teams',
-    'SharePoint lists for memory & de-dup',
-    'HTML digest delivery',
-  ],
-  results: [
-    'Reclaims the first ~30 min of every operator’s shift — a manual multi-channel trawl becomes a few-minute read over morning coffee (team of ~12)',
-    'Live in daily production for several months, running fully unattended',
-    'Consistent start-of-day view regardless of who is on shift',
-    '“Report on activity, expire on silence” de-dup doctrine — no stale items, no operator action to retire them',
-  ],
-  note:
-    'Details anonymised. Company name and internal data omitted; the architecture and outcome are shown as-is.',
+  contact: {
+    title: 'Let’s see if it’s a fit',
+    body:
+      'A 30-minute call, no slides. Tell me where your team loses time or visibility, and I’ll tell you honestly whether automation is worth it — and roughly what it would take.',
+    cta: 'Book a call',
+  },
+  footer: { role: 'AI Automation & Monitoring Engineer', builtLocal: 'Built local-first.' },
+  repoLabel: 'View repo ↗',
 }
 
-export const approach = {
-  title: 'How I work',
-  sub: 'Small, senior, and built to hand over — not to lock you in.',
-  steps: [
+const cz: Content = {
+  nav: { services: 'Služby', work: 'Práce', approach: 'Postup', about: 'O mně', book: 'Rezervovat hovor' },
+  hero: {
+    kicker: 'AI automatizace · Monitoring · Workflow engineering',
+    headline: 'Praktická AI automatizace pro malé a střední firmy — bez najímání člověka na plný úvazek.',
+    sub:
+      'Navrhuji a nasazuji monitoring huby, AI agenty a automatizované workflow, které se napojí na nástroje, jež už používáte — M365, n8n, Make, vlastní Python, váš CRM. Dostanete funkční systém a čisté předání, ne závislost.',
+    ctaPrimary: 'Rezervovat 30min úvodní hovor',
+    ctaSecondary: 'Podívejte se, co stavím',
+  },
+  services: {
+    heading: 'Co stavím',
+    title: 'Tři věci, pořádně udělané a předané.',
+    items: [
+      {
+        tag: 'sledovat',
+        title: 'Monitoring hub',
+        body: 'Jedno místo, kde vidíte, jestli věci opravdu fungují — dřív, než vám to řeknou zákazníci.',
+        points: [
+          'Metriky, logy a alerty sjednocené do přehledů, které tým přečte na první pohled',
+          'Alerting, který se spustí na reálné problémy, ne na šum',
+          'Běží na vaší infrastruktuře nebo plně lokálně — žádný nucený cloud lock-in',
+        ],
+      },
+      {
+        tag: 'automatizovat',
+        title: 'AI agenti',
+        body: 'Zaměření agenti, kteří udělají konkrétní opakovanou úlohu od začátku do konce — spolehlivě a podle plánu.',
+        points: [
+          'Přečtou vaše datové zdroje a doručí výstup tam, kde tým už pracuje',
+          'Deterministický tam, kde na tom záleží, LLM jen tam, kde přidává hodnotu',
+          'Human-in-the-loop jako standard — žádné black-box akce vaším jménem',
+        ],
+      },
+      {
+        tag: 'propojit',
+        title: 'Automatizace workflow',
+        body: 'Manuální „lepicí“ práce mezi vašimi systémy proměněná v automatizaci, která prostě běží.',
+        points: [
+          'n8n / Make / Power Automate, nebo vlastní Python tam, kde se skript hodí víc',
+          'Napojení na váš CRM, mailbox, chat a interní nástroje',
+          'Zdokumentované a předané tak, aby to fungovalo i beze mě',
+        ],
+      },
+    ],
+  },
+  work: {
+    heading: 'Vybrané projekty',
+    title: 'Systémy běžící v produkci — postavené tak, aby šly předat.',
+    note: 'Detaily specifické pro klienta či firmu jsou anonymizované. Architektura a výsledky jsou reálné.',
+  },
+  projects: [
     {
-      title: 'Scoped setup fee',
-      body:
-        'A defined implementation with a fixed price and a clear deliverable. You know what you get before we start.',
+      tag: 'automatizace · produkce',
+      title: 'Denní operační briefing',
+      summary:
+        'Naplánovaná AI automatizace, která promění noční aktivitu roztroušenou po mailboxu a ~10 chatech v jeden kategorizovaný ranní přehled — doručený týmu dřív, než se přihlásí.',
+      points: [
+        'Vrátí prvních ~30 min ze směny každého operátora (tým ~12 lidí)',
+        'V denní produkci několik měsíců, plně bez zásahu',
+        'Doktrína „report on activity, expire on silence“ — žádné zastaralé položky, žádné ruční mazání',
+      ],
+      stack: ['Power Automate', 'AI Builder (GPT-4.1)', 'M365 · Outlook · Teams', 'SharePoint'],
+      status: 'V produkci',
     },
     {
-      title: 'Light monthly retainer',
-      body:
-        'A small capped block of hours for upkeep and small tweaks — never an open-ended unlimited fee.',
+      tag: 'spolehlivost · spustitelné',
+      title: 'Audience Reconciliation',
+      summary:
+        'Spustitelný engine, který porovná číslo z nabídky v CRM s aktuálním číslem z datového skladu a zachytí cenový rozdíl dřív, než se podepíše smlouva.',
+      points: [
+        'Počítání je nejdřív problém pravidel, až potom AI — číslo produkuje deterministický, otestovaný engine',
+        'Ohraničené LLM jen přeformuluje verdikt do srozumitelné řeči; čísla se nikdy nedotkne',
+        'Selhává „closed“ — sebevědomé nesprávné číslo je ta drahá chyba, takže nebezpečné případy jdou na člověka',
+        'Běží offline, nulové závislosti, 12/12 eval případů prochází',
+      ],
+      stack: ['Python (stdlib)', 'Deterministický engine', 'Ollama / Anthropic (volitelně)', 'unittest + eval'],
+      repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
     },
     {
-      title: 'New features, separately scoped',
-      body:
-        'When you want more, we scope and price it on its own. No scope creep hidden inside a monthly bill.',
-    },
-    {
-      title: 'Documented handover',
-      body:
-        'Everything is documented so your team can run it. Security — input validation, secrets, network exposure — is handled from day one, not bolted on.',
+      tag: 'monitoring · produkce',
+      title: 'Centralizovaný monitoring hub',
+      summary:
+        'Jednotný Azure-native monitorovací povrch pro ~36 produkčních systémů — jeden vstupní bod, který nahradil roztroušené stránky v portálu, osobní záložky a externí log nástroj.',
+      points: [
+        'Jedna parametrizovaná šablona workbooku škáluje napříč všemi systémy — nový systém je změna parametru, ne ručně stavěná stránka',
+        'Signal-over-noise alerting, vyladěný po reálném incidentu s 39min zpožděným alertem (Count→Total, baseline pro každý systém)',
+        'Cross-platform „dead man’s switch“, aby monitorovací automatizace hlídaly samy sebe',
+        'Idempotentní rollout do více prostředí přes Azure CLI + parametrizované ARM šablony',
+      ],
+      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
+      status: 'V produkci',
     },
   ],
+  approach: {
+    title: 'Jak pracuji',
+    sub: 'Malý, senior přístup — postavené na předání, ne na vaší závislosti.',
+    steps: [
+      { title: 'Ohraničený vstupní poplatek', body: 'Definovaná implementace s pevnou cenou a jasným výstupem. Víte, co dostanete, ještě než začneme.' },
+      { title: 'Lehký měsíční retainer', body: 'Malý strop hodin na údržbu a drobné úpravy — nikdy ne neomezený paušál.' },
+      { title: 'Nové funkce, samostatně naceněné', body: 'Když chcete víc, naceníme to zvlášť. Žádný skrytý scope creep v měsíční faktuře.' },
+      { title: 'Zdokumentované předání', body: 'Všechno je zdokumentované, aby to váš tým uměl provozovat. Bezpečnost — validace vstupů, tajemství, síťová expozice — je řešená od prvního dne.' },
+    ],
+  },
+  about: {
+    title: 'O mně',
+    body:
+      'Jsem Jakub — AI automation a monitoring engineer v B2B softwaru, vedle toho buduji nezávislou consultingovou praxi. Moje zázemí je provoz a spolehlivost, a přesně proto jsou moje automatizace stavěné tak, aby byly v produkci spolehlivé a „nudné“: deterministické tam, kde to jde, human-in-the-loop jako standard a žádné vymýšlení. Pracuji s českými a slovenskými malými a středními firmami na Microsoft stacku i mimo něj — cílem je vždy systém, který vlastní váš tým, ne konzultant, kterého se nezbavíte.',
+    stackLabel: 'Stack',
+    stack: [
+      'Azure Monitor · Log Analytics · KQL',
+      'Power Automate · Copilot Studio · AI Builder',
+      'Python · FastAPI · LangGraph',
+      'Prometheus · Grafana · Docker',
+      'n8n · Make · M365',
+    ],
+  },
+  contact: {
+    title: 'Zjistíme, jestli si sedneme',
+    body:
+      '30 minut, žádné slajdy. Řekněte mi, kde váš tým ztrácí čas nebo přehled, a já vám upřímně řeknu, jestli se automatizace vyplatí — a zhruba co by to obnášelo.',
+    cta: 'Rezervovat hovor',
+  },
+  footer: { role: 'AI Automation & Monitoring Engineer', builtLocal: 'Postaveno local-first.' },
+  repoLabel: 'Zobrazit repo ↗',
 }
 
-export const about = {
-  title: 'About',
-  body:
-    'I’m Jakub — an AI automation and monitoring engineer working in B2B software, building an independent consulting practice in parallel. My background is operations and reliability, which is exactly why my automations are built to be dependable and boring in production: deterministic where practical, human-in-the-loop by default, and no fabrication. I work with Czech and Slovak SMEs on the Microsoft stack and beyond — the goal is always a system your team owns, not a consultant you can’t get rid of.',
-  stack: [
-    'Azure Monitor · Log Analytics · KQL',
-    'Power Automate · Copilot Studio · AI Builder',
-    'Python · FastAPI · LangGraph',
-    'Prometheus · Grafana · Docker',
-    'n8n · Make · M365',
+const sk: Content = {
+  nav: { services: 'Služby', work: 'Práce', approach: 'Postup', about: 'O mne', book: 'Rezervovať hovor' },
+  hero: {
+    kicker: 'AI automatizácia · Monitoring · Workflow engineering',
+    headline: 'Praktická AI automatizácia pre malé a stredné firmy — bez najímania človeka na plný úväzok.',
+    sub:
+      'Navrhujem a nasadzujem monitoring huby, AI agentov a automatizované workflowy, ktoré sa napoja na nástroje, ktoré už používate — M365, n8n, Make, vlastný Python, váš CRM. Dostanete funkčný systém a čisté odovzdanie, nie závislosť.',
+    ctaPrimary: 'Rezervovať 30min úvodný hovor',
+    ctaSecondary: 'Pozrite sa, čo staviam',
+  },
+  services: {
+    heading: 'Čo staviam',
+    title: 'Tri veci, poriadne spravené a odovzdané.',
+    items: [
+      {
+        tag: 'sledovať',
+        title: 'Monitoring hub',
+        body: 'Jedno miesto, kde vidíte, či veci naozaj fungujú — skôr než vám to povedia zákazníci.',
+        points: [
+          'Metriky, logy a alerty zjednotené do prehľadov, ktoré tím prečíta na prvý pohľad',
+          'Alerting, ktorý sa spustí na reálne problémy, nie na šum',
+          'Beží na vašej infraštruktúre alebo plne lokálne — žiadny nútený cloud lock-in',
+        ],
+      },
+      {
+        tag: 'automatizovať',
+        title: 'AI agenti',
+        body: 'Zameraní agenti, ktorí spravia konkrétnu opakovanú úlohu od začiatku do konca — spoľahlivo a podľa plánu.',
+        points: [
+          'Prečítajú vaše dátové zdroje a doručia výstup tam, kde tím už pracuje',
+          'Deterministickí tam, kde na tom záleží, LLM len tam, kde pridáva hodnotu',
+          'Human-in-the-loop ako štandard — žiadne black-box akcie vo vašom mene',
+        ],
+      },
+      {
+        tag: 'prepojiť',
+        title: 'Automatizácia workflow',
+        body: 'Manuálna „lepiaca“ práca medzi vašimi systémami premenená na automatizáciu, ktorá jednoducho beží.',
+        points: [
+          'n8n / Make / Power Automate, alebo vlastný Python tam, kde sa skript hodí viac',
+          'Napojenie na váš CRM, mailbox, chat a interné nástroje',
+          'Zdokumentované a odovzdané tak, aby to fungovalo aj bezo mňa',
+        ],
+      },
+    ],
+  },
+  work: {
+    heading: 'Vybrané projekty',
+    title: 'Systémy bežiace v produkcii — postavené tak, aby sa dali odovzdať.',
+    note: 'Detaily špecifické pre klienta či firmu sú anonymizované. Architektúra a výsledky sú reálne.',
+  },
+  projects: [
+    {
+      tag: 'automatizácia · produkcia',
+      title: 'Denný operačný briefing',
+      summary:
+        'Naplánovaná AI automatizácia, ktorá premení nočnú aktivitu roztrúsenú po mailboxe a ~10 chatoch na jeden kategorizovaný ranný prehľad — doručený tímu skôr, než sa prihlásia.',
+      points: [
+        'Vráti prvých ~30 min zo zmeny každého operátora (tím ~12 ľudí)',
+        'V dennej produkcii niekoľko mesiacov, plne bez zásahu',
+        'Doktrína „report on activity, expire on silence“ — žiadne zastarané položky, žiadne manuálne mazanie',
+      ],
+      stack: ['Power Automate', 'AI Builder (GPT-4.1)', 'M365 · Outlook · Teams', 'SharePoint'],
+      status: 'V produkcii',
+    },
+    {
+      tag: 'spoľahlivosť · spustiteľné',
+      title: 'Audience Reconciliation',
+      summary:
+        'Spustiteľný engine, ktorý porovná číslo z ponuky v CRM s aktuálnym číslom z dátového skladu a zachytí cenový rozdiel skôr, než sa podpíše zmluva.',
+      points: [
+        'Počítanie je najprv problém pravidiel, až potom AI — číslo produkuje deterministický, otestovaný engine',
+        'Ohraničené LLM len preformuluje verdikt do zrozumiteľnej reči; čísla sa nikdy nedotkne',
+        'Zlyháva „closed“ — sebavedomé nesprávne číslo je tá drahá chyba, takže nebezpečné prípady idú na človeka',
+        'Beží offline, nulové závislosti, 12/12 eval prípadov prechádza',
+      ],
+      stack: ['Python (stdlib)', 'Deterministický engine', 'Ollama / Anthropic (voliteľne)', 'unittest + eval'],
+      repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
+    },
+    {
+      tag: 'monitoring · produkcia',
+      title: 'Centralizovaný monitoring hub',
+      summary:
+        'Jednotný Azure-native monitorovací povrch pre ~36 produkčných systémov — jeden vstupný bod, ktorý nahradil roztrúsené stránky v portáli, osobné záložky a externý log nástroj.',
+      points: [
+        'Jedna parametrizovaná šablóna workbooku škáluje naprieč všetkými systémami — nový systém je zmena parametra, nie ručne stavaná stránka',
+        'Signal-over-noise alerting, vyladený po reálnom incidente s 39min oneskoreným alertom (Count→Total, baseline pre každý systém)',
+        'Cross-platform „dead man’s switch“, aby monitorovacie automatizácie strážili samy seba',
+        'Idempotentný rollout do viacerých prostredí cez Azure CLI + parametrizované ARM šablóny',
+      ],
+      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
+      status: 'V produkcii',
+    },
   ],
+  approach: {
+    title: 'Ako pracujem',
+    sub: 'Malý, senior prístup — postavené na odovzdanie, nie na vašu závislosť.',
+    steps: [
+      { title: 'Ohraničený vstupný poplatok', body: 'Definovaná implementácia s pevnou cenou a jasným výstupom. Viete, čo dostanete, ešte než začneme.' },
+      { title: 'Ľahký mesačný retainer', body: 'Malý strop hodín na údržbu a drobné úpravy — nikdy nie neobmedzený paušál.' },
+      { title: 'Nové funkcie, samostatne ocenené', body: 'Keď chcete viac, naceníme to zvlášť. Žiadny skrytý scope creep v mesačnej faktúre.' },
+      { title: 'Zdokumentované odovzdanie', body: 'Všetko je zdokumentované, aby to váš tím vedel prevádzkovať. Bezpečnosť — validácia vstupov, tajomstvá, sieťová expozícia — je riešená od prvého dňa.' },
+    ],
+  },
+  about: {
+    title: 'O mne',
+    body:
+      'Som Jakub — AI automation a monitoring engineer v B2B softvéri, popri tom budujem nezávislú consulting prax. Moje zázemie je prevádzka a spoľahlivosť, a práve preto sú moje automatizácie stavané tak, aby boli v produkcii spoľahlivé a „nudné“: deterministické tam, kde sa dá, human-in-the-loop ako štandard a žiadne vymýšľanie. Pracujem s českými a slovenskými malými a strednými firmami na Microsoft stacku aj mimo neho — cieľom je vždy systém, ktorý vlastní váš tím, nie konzultant, ktorého sa neviete zbaviť.',
+    stackLabel: 'Stack',
+    stack: [
+      'Azure Monitor · Log Analytics · KQL',
+      'Power Automate · Copilot Studio · AI Builder',
+      'Python · FastAPI · LangGraph',
+      'Prometheus · Grafana · Docker',
+      'n8n · Make · M365',
+    ],
+  },
+  contact: {
+    title: 'Zistime, či si sadneme',
+    body:
+      '30 minút, žiadne slajdy. Povedzte mi, kde váš tím stráca čas alebo prehľad, a ja vám úprimne poviem, či sa automatizácia oplatí — a zhruba čo by to obnášalo.',
+    cta: 'Rezervovať hovor',
+  },
+  footer: { role: 'AI Automation & Monitoring Engineer', builtLocal: 'Postavené local-first.' },
+  repoLabel: 'Zobraziť repo ↗',
 }
 
-export const contact = {
-  title: 'Let’s see if it’s a fit',
-  body:
-    'A 30-minute call, no slides. Tell me where your team loses time or visibility, and I’ll tell you honestly whether automation is worth it — and roughly what it would take.',
-  cta: 'Book a call',
-}
+export const CONTENT: Record<Lang, Content> = { en, cz, sk }

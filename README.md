@@ -14,7 +14,7 @@ npm run preview  # serve the production build
 
 ## Content
 
-All page copy lives in `src/data/content.ts`.
+All page copy lives in `src/data/content.ts` (English + Czech).
 
 ## Deploy
 

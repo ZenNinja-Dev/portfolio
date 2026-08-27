@@ -1,11 +1,13 @@
 import { site } from '../data/content'
+import { useLang } from '../i18n'
 
 export default function Footer() {
+  const { t } = useLang()
   return (
     <footer className="mx-auto max-w-5xl px-5 py-10">
       <div className="flex flex-col items-start justify-between gap-3 text-sm text-slate-600 sm:flex-row sm:items-center">
         <span className="font-mono">
-          {site.name} — {site.role}
+          {site.name} — {t.footer.role}
         </span>
         <div className="flex gap-4">
           <a href={site.github} target="_blank" rel="noreferrer" className="hover:text-slate-300">
@@ -17,7 +19,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="mt-4 text-xs text-slate-700">
-        © {new Date().getFullYear()} {site.name}. Built local-first.
+        © {new Date().getFullYear()} {site.name}. {t.footer.builtLocal}
       </p>
     </footer>
   )
