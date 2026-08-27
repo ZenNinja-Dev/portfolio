@@ -1,9 +1,9 @@
-# Portfolio — Jakub Lazový
+# Jakub Lazový — Portfolio
 
-Static React/Vite site for the AI automation & monitoring consulting practice.
-Slice A1 of the lead-gen system (portfolio + booking).
+Personal site for my AI automation & monitoring consulting work.
+Built with React + Vite + Tailwind CSS, deployed on GitHub Pages.
 
-## Local dev
+## Development
 
 ```bash
 npm install
@@ -12,27 +12,11 @@ npm run build    # outputs to dist/
 npm run preview  # serve the production build
 ```
 
-## Edit content
+## Content
 
-All copy lives in `src/data/content.ts` — offer, services, case study, Calendly URL.
-No need to touch components to change wording.
+All page copy lives in `src/data/content.ts`.
 
-## Deploy to GitHub Pages
+## Deploy
 
-Two options depending on the repo:
-
-**User site** — repo named `ZenNinja-Dev.github.io`
-Served at `https://zenninja-dev.github.io`. Leave `BASE_PATH` unset.
-
-**Project site** — any other repo name, e.g. `portfolio`
-Served at `https://zenninja-dev.github.io/portfolio/`.
-In repo Settings → Secrets and variables → Actions → Variables, add:
-`BASE_PATH = /portfolio/`
-
-Then: Settings → Pages → Source = **GitHub Actions**.
-Push to `main` and the workflow in `.github/workflows/deploy.yml` builds and deploys.
-
-## Next (Slice A2)
-
-Add real portfolio projects as they mature: Incident Copilot (public repo),
-Monitoring Hub. Slot links/cards into the Work section.
+GitHub Actions builds and publishes to GitHub Pages on every push to `main`
+(`.github/workflows/deploy.yml`).
