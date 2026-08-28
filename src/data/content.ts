@@ -88,6 +88,21 @@ const en: Content = {
   },
   projects: [
     {
+      tag: 'monitoring · azure',
+      title: 'Azure Monitoring Hub',
+      summary:
+        'A reusable, Azure-native monitoring hub you can drop onto any Azure estate — one entry point, a per-system workbook template that scales, signal-over-noise alerting, and deployment as code.',
+      points: [
+        'One parameterised workbook template scales across every system — a new system is a parameter change, not a hand-built page',
+        'Signal-over-noise alerting, including a bulletproof zero-detection pattern (an empty result set still fires)',
+        'A cross-platform “dead man’s switch” so the monitoring automations monitor themselves',
+        'Idempotent multi-environment rollout via Azure CLI + parameterised ARM templates',
+      ],
+      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
+      status: 'Open source',
+      repo: 'https://github.com/ZenNinja-Dev/azure-monitoring-hub',
+    },
+    {
       tag: 'reliability · runnable',
       title: 'Audience Reconciliation',
       summary:
@@ -188,6 +203,21 @@ const cz: Content = {
   },
   projects: [
     {
+      tag: 'monitoring · azure',
+      title: 'Azure Monitoring Hub',
+      summary:
+        'Znovupoužitelný Azure-native monitoring hub, který nasadíte na jakékoli Azure prostředí — jeden vstupní bod, škálovatelná šablona workbooku, signal-over-noise alerting a nasazení jako kód.',
+      points: [
+        'Jedna parametrizovaná šablona workbooku škáluje napříč všemi systémy — nový systém je změna parametru, ne ručně stavěná stránka',
+        'Signal-over-noise alerting včetně „bulletproof“ zero-detection patternu (spustí se i na prázdný výsledek)',
+        'Cross-platform „dead man’s switch“, aby monitorovací automatizace hlídaly samy sebe',
+        'Idempotentní rollout do více prostředí přes Azure CLI + parametrizované ARM šablony',
+      ],
+      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
+      status: 'Open source',
+      repo: 'https://github.com/ZenNinja-Dev/azure-monitoring-hub',
+    },
+    {
       tag: 'spolehlivost · spustitelné',
       title: 'Audience Reconciliation',
       summary:
@@ -287,6 +317,21 @@ const sk: Content = {
     note: 'Ďalšie projekty pribúdajú.',
   },
   projects: [
+    {
+      tag: 'monitoring · azure',
+      title: 'Azure Monitoring Hub',
+      summary:
+        'Znovupoužiteľný Azure-native monitoring hub, ktorý nasadíte na akékoľvek Azure prostredie — jeden vstupný bod, škálovateľná šablóna workbooku, signal-over-noise alerting a nasadenie ako kód.',
+      points: [
+        'Jedna parametrizovaná šablóna workbooku škáluje naprieč všetkými systémami — nový systém je zmena parametra, nie ručne stavaná stránka',
+        'Signal-over-noise alerting vrátane „bulletproof“ zero-detection patternu (spustí sa aj na prázdny výsledok)',
+        'Cross-platform „dead man’s switch“, aby monitorovacie automatizácie strážili samy seba',
+        'Idempotentný rollout do viacerých prostredí cez Azure CLI + parametrizované ARM šablóny',
+      ],
+      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
+      status: 'Open source',
+      repo: 'https://github.com/ZenNinja-Dev/azure-monitoring-hub',
+    },
     {
       tag: 'spoľahlivosť · spustiteľné',
       title: 'Audience Reconciliation',
