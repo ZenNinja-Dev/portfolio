@@ -83,23 +83,10 @@ const en: Content = {
   },
   work: {
     heading: 'Selected work',
-    title: 'Systems running in production — and built to be handed over.',
-    note: 'Client- and company-specific details are anonymised. Architecture and outcomes shown as-is.',
+    title: 'A sample of what I build.',
+    note: 'More projects being added.',
   },
   projects: [
-    {
-      tag: 'automation · production',
-      title: 'Daily Operations Briefing',
-      summary:
-        'A scheduled AI automation that turns overnight activity scattered across a mailbox and ~10 chats into one categorised morning digest — delivered to the team before they log on.',
-      points: [
-        'Reclaims the first ~30 min of every operator’s shift (team of ~12)',
-        'Live in daily production for several months, fully unattended',
-        '“Report on activity, expire on silence” de-dup doctrine — no stale items, no manual retiring',
-      ],
-      stack: ['Power Automate', 'AI Builder (GPT-4.1)', 'M365 · Outlook · Teams', 'SharePoint'],
-      status: 'Live in production',
-    },
     {
       tag: 'reliability · runnable',
       title: 'Audience Reconciliation',
@@ -113,20 +100,6 @@ const en: Content = {
       ],
       stack: ['Python (stdlib)', 'Deterministic engine', 'Ollama / Anthropic (optional)', 'unittest + eval'],
       repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
-    },
-    {
-      tag: 'monitoring · production',
-      title: 'Centralised Monitoring Hub',
-      summary:
-        'A single Azure-native monitoring surface for a ~36-system production estate — one entry point replacing scattered portal blades, personal bookmarks and a third-party log tool.',
-      points: [
-        'One parameterised workbook template scales across every system — a new system is a parameter change, not a hand-built page',
-        'Signal-over-noise alerting, hardened after a real 39-minute delayed-alert incident (Count→Total, per-system baselines)',
-        'A cross-platform “dead man’s switch” so the monitoring automations monitor themselves',
-        'Idempotent multi-environment rollout via Azure CLI + parameterised ARM templates',
-      ],
-      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
-      status: 'Live in production',
     },
   ],
   approach: {
@@ -210,23 +183,10 @@ const cz: Content = {
   },
   work: {
     heading: 'Vybrané projekty',
-    title: 'Systémy běžící v produkci — postavené tak, aby šly předat.',
-    note: 'Detaily specifické pro klienta či firmu jsou anonymizované. Architektura a výsledky jsou reálné.',
+    title: 'Ukázka toho, co stavím.',
+    note: 'Další projekty přibývají.',
   },
   projects: [
-    {
-      tag: 'automatizace · produkce',
-      title: 'Denní operační briefing',
-      summary:
-        'Naplánovaná AI automatizace, která promění noční aktivitu roztroušenou po mailboxu a ~10 chatech v jeden kategorizovaný ranní přehled — doručený týmu dřív, než se přihlásí.',
-      points: [
-        'Vrátí prvních ~30 min ze směny každého operátora (tým ~12 lidí)',
-        'V denní produkci několik měsíců, plně bez zásahu',
-        'Doktrína „report on activity, expire on silence“ — žádné zastaralé položky, žádné ruční mazání',
-      ],
-      stack: ['Power Automate', 'AI Builder (GPT-4.1)', 'M365 · Outlook · Teams', 'SharePoint'],
-      status: 'V produkci',
-    },
     {
       tag: 'spolehlivost · spustitelné',
       title: 'Audience Reconciliation',
@@ -240,20 +200,6 @@ const cz: Content = {
       ],
       stack: ['Python (stdlib)', 'Deterministický engine', 'Ollama / Anthropic (volitelně)', 'unittest + eval'],
       repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
-    },
-    {
-      tag: 'monitoring · produkce',
-      title: 'Centralizovaný monitoring hub',
-      summary:
-        'Jednotný Azure-native monitorovací povrch pro ~36 produkčních systémů — jeden vstupní bod, který nahradil roztroušené stránky v portálu, osobní záložky a externí log nástroj.',
-      points: [
-        'Jedna parametrizovaná šablona workbooku škáluje napříč všemi systémy — nový systém je změna parametru, ne ručně stavěná stránka',
-        'Signal-over-noise alerting, vyladěný po reálném incidentu s 39min zpožděným alertem (Count→Total, baseline pro každý systém)',
-        'Cross-platform „dead man’s switch“, aby monitorovací automatizace hlídaly samy sebe',
-        'Idempotentní rollout do více prostředí přes Azure CLI + parametrizované ARM šablony',
-      ],
-      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
-      status: 'V produkci',
     },
   ],
   approach: {
@@ -337,23 +283,10 @@ const sk: Content = {
   },
   work: {
     heading: 'Vybrané projekty',
-    title: 'Systémy bežiace v produkcii — postavené tak, aby sa dali odovzdať.',
-    note: 'Detaily špecifické pre klienta či firmu sú anonymizované. Architektúra a výsledky sú reálne.',
+    title: 'Ukážka toho, čo staviam.',
+    note: 'Ďalšie projekty pribúdajú.',
   },
   projects: [
-    {
-      tag: 'automatizácia · produkcia',
-      title: 'Denný operačný briefing',
-      summary:
-        'Naplánovaná AI automatizácia, ktorá premení nočnú aktivitu roztrúsenú po mailboxe a ~10 chatoch na jeden kategorizovaný ranný prehľad — doručený tímu skôr, než sa prihlásia.',
-      points: [
-        'Vráti prvých ~30 min zo zmeny každého operátora (tím ~12 ľudí)',
-        'V dennej produkcii niekoľko mesiacov, plne bez zásahu',
-        'Doktrína „report on activity, expire on silence“ — žiadne zastarané položky, žiadne manuálne mazanie',
-      ],
-      stack: ['Power Automate', 'AI Builder (GPT-4.1)', 'M365 · Outlook · Teams', 'SharePoint'],
-      status: 'V produkcii',
-    },
     {
       tag: 'spoľahlivosť · spustiteľné',
       title: 'Audience Reconciliation',
@@ -367,20 +300,6 @@ const sk: Content = {
       ],
       stack: ['Python (stdlib)', 'Deterministický engine', 'Ollama / Anthropic (voliteľne)', 'unittest + eval'],
       repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
-    },
-    {
-      tag: 'monitoring · produkcia',
-      title: 'Centralizovaný monitoring hub',
-      summary:
-        'Jednotný Azure-native monitorovací povrch pre ~36 produkčných systémov — jeden vstupný bod, ktorý nahradil roztrúsené stránky v portáli, osobné záložky a externý log nástroj.',
-      points: [
-        'Jedna parametrizovaná šablóna workbooku škáluje naprieč všetkými systémami — nový systém je zmena parametra, nie ručne stavaná stránka',
-        'Signal-over-noise alerting, vyladený po reálnom incidente s 39min oneskoreným alertom (Count→Total, baseline pre každý systém)',
-        'Cross-platform „dead man’s switch“, aby monitorovacie automatizácie strážili samy seba',
-        'Idempotentný rollout do viacerých prostredí cez Azure CLI + parametrizované ARM šablóny',
-      ],
-      stack: ['Azure Monitor', 'Log Analytics · KQL', 'Azure Resource Graph', 'Application Insights', 'ARM / IaC'],
-      status: 'V produkcii',
     },
   ],
   approach: {
