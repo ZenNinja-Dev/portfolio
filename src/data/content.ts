@@ -126,6 +126,21 @@ const en: Content = {
       stack: ['Python (stdlib)', 'Deterministic engine', 'Ollama / Anthropic (optional)', 'unittest + eval'],
       repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
     },
+    {
+      tag: 'observability · ai agent',
+      title: 'Incident Copilot',
+      summary:
+        'A local AI agent that triages incidents on its own. Break a service in a running microservice stack and it reads the live metrics, finds the root cause across service dependencies, and tells you what to do — 100% local, no cloud, no API keys.',
+      points: [
+        'Dependency-aware root-cause analysis — traces a symptom to the failing service, not the one that merely cascades from it',
+        'Drills down to the exact failing endpoint, scores severity (SEV1–3) and compares against five minutes ago',
+        'Suggests a concrete remediation — deterministic detection, LLM only for the plain-English narration',
+        'Runs entirely on your machine: Docker Compose + a local LLM, git clone && docker compose up',
+      ],
+      stack: ['FastAPI', 'Prometheus · Grafana', 'LangGraph', 'Ollama (local LLM)', 'Docker Compose'],
+      status: 'Open source',
+      repo: 'https://github.com/ZenNinja-Dev/incident-copilot',
+    },
   ],
   approach: {
     title: 'How I work',
@@ -250,6 +265,21 @@ const cz: Content = {
       stack: ['Python (stdlib)', 'Deterministický engine', 'Ollama / Anthropic (volitelně)', 'unittest + eval'],
       repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
     },
+    {
+      tag: 'observabilita · ai agent',
+      title: 'Incident Copilot',
+      summary:
+        'Lokální AI agent, který si sám odbaví triáž incidentu. Rozbijte službu v běžícím microservice stacku a on přečte živé metriky, najde příčinu napříč závislostmi služeb a řekne, co dělat — 100% lokálně, žádný cloud, žádné API klíče.',
+      points: [
+        'Analýza příčiny s ohledem na závislosti — vystopuje symptom k selhávající službě, ne k té, která jen kaskáduje',
+        'Zavrtá se ke konkrétnímu selhávajícímu endpointu, ohodnotí závažnost (SEV1–3) a porovná se stavem před pěti minutami',
+        'Navrhne konkrétní nápravu — deterministická detekce, LLM jen na srozumitelné vysvětlení',
+        'Běží celé na vašem stroji: Docker Compose + lokální LLM, git clone && docker compose up',
+      ],
+      stack: ['FastAPI', 'Prometheus · Grafana', 'LangGraph', 'Ollama (lokální LLM)', 'Docker Compose'],
+      status: 'Open source',
+      repo: 'https://github.com/ZenNinja-Dev/incident-copilot',
+    },
   ],
   approach: {
     title: 'Jak pracuji',
@@ -373,6 +403,21 @@ const sk: Content = {
       ],
       stack: ['Python (stdlib)', 'Deterministický engine', 'Ollama / Anthropic (voliteľne)', 'unittest + eval'],
       repo: 'https://github.com/ZenNinja-Dev/audience-reconciliation',
+    },
+    {
+      tag: 'observabilita · ai agent',
+      title: 'Incident Copilot',
+      summary:
+        'Lokálny AI agent, ktorý si sám odbaví triáž incidentu. Rozbite službu v bežiacom microservice stacku a on prečíta živé metriky, nájde príčinu naprieč závislosťami služieb a povie, čo robiť — 100% lokálne, žiadny cloud, žiadne API kľúče.',
+      points: [
+        'Analýza príčiny s ohľadom na závislosti — vystopuje symptóm k zlyhávajúcej službe, nie k tej, ktorá len kaskáduje',
+        'Zavŕta sa ku konkrétnemu zlyhávajúcemu endpointu, ohodnotí závažnosť (SEV1–3) a porovná so stavom spred piatich minút',
+        'Navrhne konkrétnu nápravu — deterministická detekcia, LLM len na zrozumiteľné vysvetlenie',
+        'Beží celé na vašom stroji: Docker Compose + lokálny LLM, git clone && docker compose up',
+      ],
+      stack: ['FastAPI', 'Prometheus · Grafana', 'LangGraph', 'Ollama (lokálny LLM)', 'Docker Compose'],
+      status: 'Open source',
+      repo: 'https://github.com/ZenNinja-Dev/incident-copilot',
     },
   ],
   approach: {
