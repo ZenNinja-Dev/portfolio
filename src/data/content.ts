@@ -26,6 +26,7 @@ type Content = {
   nav: { services: string; work: string; approach: string; about: string; book: string }
   hero: { kicker: string; headline: string; sub: string; ctaPrimary: string; ctaSecondary: string }
   services: { heading: string; title: string; items: { tag: string; title: string; body: string; points: string[] }[] }
+  outcomes: { heading: string; items: { title: string; body: string }[] }
   work: { heading: string; title: string; note: string }
   projects: Project[]
   approach: { title: string; sub: string; steps: { title: string; body: string }[] }
@@ -81,6 +82,15 @@ const en: Content = {
       },
     ],
   },
+  outcomes: {
+    heading: 'What you get',
+    items: [
+      { title: 'Fewer surprises', body: 'Problems surface before your customers — or your numbers — feel them.' },
+      { title: 'Hours back every week', body: 'The repetitive manual work your team does daily, done automatically.' },
+      { title: 'No new hire', body: 'A working system set up by one senior person — not a new team or a full-time salary.' },
+      { title: 'You own it', body: 'Documented and handed over, so it runs without me. No lock-in.' },
+    ],
+  },
   work: {
     heading: 'Selected work',
     title: 'A sample of what I build.',
@@ -91,7 +101,7 @@ const en: Content = {
       tag: 'monitoring · azure',
       title: 'Azure Monitoring Hub',
       summary:
-        'A reusable, Azure-native monitoring hub you can drop onto any Azure estate — one entry point, a per-system workbook template that scales, signal-over-noise alerting, and deployment as code.',
+        'See whether everything is working from one screen, and get alerted on real problems — not noise. A reusable Azure monitoring setup that scales across all your systems.',
       points: [
         'One parameterised workbook template scales across every system — a new system is a parameter change, not a hand-built page',
         'Signal-over-noise alerting, including a bulletproof zero-detection pattern (an empty result set still fires)',
@@ -106,7 +116,7 @@ const en: Content = {
       tag: 'reliability · runnable',
       title: 'Audience Reconciliation',
       summary:
-        'A runnable engine that reconciles a CRM-quoted number against the live data-warehouse number, catching pricing drift before a contract executes.',
+        'Stops pricing mistakes before a contract is signed — it checks the number in your CRM quote against the real number in your data warehouse and flags any mismatch.',
       points: [
         'Counting is a rules problem before it’s an AI problem — a deterministic, tested engine produces the number',
         'A bounded LLM only rephrases the verdict into plain English; it never touches a number',
@@ -196,6 +206,15 @@ const cz: Content = {
       },
     ],
   },
+  outcomes: {
+    heading: 'Co z toho máte',
+    items: [
+      { title: 'Méně překvapení', body: 'Problémy se ukážou dřív, než je pocítí vaši zákazníci — nebo vaše čísla.' },
+      { title: 'Hodiny zpět každý týden', body: 'Opakovaná ruční práce, kterou tým dělá denně, běží automaticky.' },
+      { title: 'Bez nového člověka', body: 'Funkční systém nastavený jedním seniorem — ne nový tým ani plný úvazek.' },
+      { title: 'Vlastníte to', body: 'Zdokumentované a předané, běží i beze mě. Žádný lock-in.' },
+    ],
+  },
   work: {
     heading: 'Vybrané projekty',
     title: 'Ukázka toho, co stavím.',
@@ -206,7 +225,7 @@ const cz: Content = {
       tag: 'monitoring · azure',
       title: 'Azure Monitoring Hub',
       summary:
-        'Znovupoužitelný Azure-native monitoring hub, který nasadíte na jakékoli Azure prostředí — jeden vstupní bod, škálovatelná šablona workbooku, signal-over-noise alerting a nasazení jako kód.',
+        'Vidíte z jedné obrazovky, jestli všechno běží, a upozornění dostanete na skutečné problémy — ne na šum. Znovupoužitelný Azure monitoring, který škáluje přes všechny vaše systémy.',
       points: [
         'Jedna parametrizovaná šablona workbooku škáluje napříč všemi systémy — nový systém je změna parametru, ne ručně stavěná stránka',
         'Signal-over-noise alerting včetně „bulletproof“ zero-detection patternu (spustí se i na prázdný výsledek)',
@@ -221,7 +240,7 @@ const cz: Content = {
       tag: 'spolehlivost · spustitelné',
       title: 'Audience Reconciliation',
       summary:
-        'Spustitelný engine, který porovná číslo z nabídky v CRM s aktuálním číslem z datového skladu a zachytí cenový rozdíl dřív, než se podepíše smlouva.',
+        'Zastaví cenové chyby dřív, než se podepíše smlouva — porovná číslo z nabídky v CRM se skutečným číslem z datového skladu a označí každý nesoulad.',
       points: [
         'Počítání je nejdřív problém pravidel, až potom AI — číslo produkuje deterministický, otestovaný engine',
         'Ohraničené LLM jen přeformuluje verdikt do srozumitelné řeči; čísla se nikdy nedotkne',
@@ -311,6 +330,15 @@ const sk: Content = {
       },
     ],
   },
+  outcomes: {
+    heading: 'Čo z toho máte',
+    items: [
+      { title: 'Menej prekvapení', body: 'Problémy sa ukážu skôr, než ich pocítia vaši zákazníci — alebo vaše čísla.' },
+      { title: 'Hodiny späť každý týždeň', body: 'Opakovaná ručná práca, ktorú tím robí denne, beží automaticky.' },
+      { title: 'Bez nového človeka', body: 'Funkčný systém nastavený jedným seniorom — nie nový tím ani plný úväzok.' },
+      { title: 'Vlastníte to', body: 'Zdokumentované a odovzdané, beží aj bezo mňa. Žiadny lock-in.' },
+    ],
+  },
   work: {
     heading: 'Vybrané projekty',
     title: 'Ukážka toho, čo staviam.',
@@ -321,7 +349,7 @@ const sk: Content = {
       tag: 'monitoring · azure',
       title: 'Azure Monitoring Hub',
       summary:
-        'Znovupoužiteľný Azure-native monitoring hub, ktorý nasadíte na akékoľvek Azure prostredie — jeden vstupný bod, škálovateľná šablóna workbooku, signal-over-noise alerting a nasadenie ako kód.',
+        'Vidíte z jednej obrazovky, či všetko beží, a upozornenie dostanete na skutočné problémy — nie na šum. Znovupoužiteľný Azure monitoring, ktorý škáluje cez všetky vaše systémy.',
       points: [
         'Jedna parametrizovaná šablóna workbooku škáluje naprieč všetkými systémami — nový systém je zmena parametra, nie ručne stavaná stránka',
         'Signal-over-noise alerting vrátane „bulletproof“ zero-detection patternu (spustí sa aj na prázdny výsledok)',
@@ -336,7 +364,7 @@ const sk: Content = {
       tag: 'spoľahlivosť · spustiteľné',
       title: 'Audience Reconciliation',
       summary:
-        'Spustiteľný engine, ktorý porovná číslo z ponuky v CRM s aktuálnym číslom z dátového skladu a zachytí cenový rozdiel skôr, než sa podpíše zmluva.',
+        'Zastaví cenové chyby skôr, než sa podpíše zmluva — porovná číslo z ponuky v CRM so skutočným číslom z dátového skladu a označí každý nesúlad.',
       points: [
         'Počítanie je najprv problém pravidiel, až potom AI — číslo produkuje deterministický, otestovaný engine',
         'Ohraničené LLM len preformuluje verdikt do zrozumiteľnej reči; čísla sa nikdy nedotkne',
